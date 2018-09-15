@@ -1,11 +1,19 @@
 import { Router } from 'express'
 import DemandItemController from './DemandItemController'
+<<<<<<< Updated upstream
 import DonationItemController from './DonationItemController'
+=======
+import UserController from './UserController'
+>>>>>>> Stashed changes
 
 const router = new Router()
 
 DemandItemController(router)
+<<<<<<< Updated upstream
 DonationItemController(router)
+=======
+UserController(router)
+>>>>>>> Stashed changes
 
 router.get('/hello', (req, res) => {
   res.send('hello')
