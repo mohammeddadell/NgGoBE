@@ -2,7 +2,6 @@ import DonationItem from '../models/DonationItem'
 
 const DonationItemController = (router) => {
   router.post('/donation-items', (req, res) => {
-    console.log('REQUEST: ', req.body)
     new DonationItem({
       title: req.body.title,
       category: req.body.category,
