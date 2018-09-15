@@ -5,6 +5,7 @@ const UserController = (router) => {
     new User({
       name: req.body.name,
       type: req.body.type,
+      locations: req.body.locations
     })
     .save()
     .then(() => {
