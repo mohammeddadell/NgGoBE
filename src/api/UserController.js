@@ -4,7 +4,8 @@ const UserController = (router) => {
   router.post('/user', (req, res) => {
     new User({
       name: req.body.name,
-      location: req.body.location
+      location: req.body.location,
+      count: 0
     })
       .save()
       .then(() => {

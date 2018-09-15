@@ -4,17 +4,15 @@ import mongoose from './services/mongoose'
 import express from './services/express'
 import api from './api'
 import SocketIO from 'socket.io'
+import Socket from './api/socket'
 
 const app = express(apiRoot, api)
 const server = http.createServer(app)
-const io = new SocketIO(server) // server.server
+const io = new SocketIO(server)
+Socket(io)
 
 mongoose.connect(mongo.uri)
 mongoose.Promise = Promise
-
-io.on('connection', (socket) => {
-  console.log('SOCKET CONNECTED')
-})
 
 setImmediate(() => {
   server.listen(port, ip, () => {

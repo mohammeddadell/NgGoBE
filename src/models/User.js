@@ -12,7 +12,8 @@ const schema = new mongoose.Schema({
     city: String,
     zip: String,
     country: String
-  }
+  },
+  count: Number
 })
 
 export default mongoose.model('User', schema)

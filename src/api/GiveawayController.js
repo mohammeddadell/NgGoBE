@@ -1,7 +1,7 @@
 import Giveaway from '../models/Giveaway'
 import User from '../models/User'
 
-const GiveawayController = (router) => {
+const GiveawayController = (router, socket) => {
   router.post('/giveaway', (req, res) => {
     new Giveaway({
       annotation: req.body.annotation,
