@@ -2,14 +2,13 @@ import DonationItem from '../models/DonationItem'
 
 const DonationItemController = (router) => {
   router.post('/donation-items', (req, res) => {
-    console.log('REQUEST: ', req.body)
     new DonationItem({
       title: req.body.title,
       category: req.body.category,
       description: req.body.description,
       image: req.body.image,
       status: 0,
-      user: req.body.user
+      user: req.headers.userid
     })
     .save()
     .then(() => {
