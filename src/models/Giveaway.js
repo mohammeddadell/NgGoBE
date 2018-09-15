@@ -1,7 +1,6 @@
 import mongoose from '../services/mongoose'
-import { Schema } from 'mongoose'
 
-const giveawaySchema = new mongoose.Schema({
+const schema = new mongoose.Schema({
   annotation: String,
   amount: Number,
   timestamp: String,
@@ -18,4 +17,4 @@ const giveawaySchema = new mongoose.Schema({
   }
 })
 
-export default mongoose.model('Giveaway', giveawaySchema)
+export default mongoose.model('Giveaway', schema)

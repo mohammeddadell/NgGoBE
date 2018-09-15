@@ -25,17 +25,6 @@ const GiveawayController = (router) => {
         console.log(err)
         res.send({ errorMessage: err.message })
       })
-    /**
-      .save()
-      .then(() => {
-        res.send({ status: 'ok' })
-        // fire socket here
-      })
-      .catch(err => {
-        console.log(err)
-        res.send({ errorMessage: err.message })
-      })
-    */
   })
 
   router.get('/giveaway', (req, res) => {
@@ -65,15 +54,6 @@ const GiveawayController = (router) => {
     Giveaway.findByIdAndUpdate(req.body._id, req.body)
       .then((giveaway) => {
         res.send({ status: 'ok' })
-        /**
-        User.findByIdAndUpdate(giveaway.user, {$push: {giveaways: giveaway}})
-          .then(() => {
-            res.send({ status: 'ok' })
-          }).catch(err => {
-            console.log(err)
-            res.send({ errorMessage: err.message })
-          })
-        */
       })
       .catch(err => {
         console.log(err)
