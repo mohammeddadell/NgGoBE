@@ -1,6 +1,9 @@
 import { Router } from 'express'
+import DemandItemController from './DemandItemController'
 
 const router = new Router()
+
+DemandItemController(router)
 
 
 router.get('/hello', (req, res) => {
