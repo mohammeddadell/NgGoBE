@@ -9,7 +9,7 @@ const DonationItemController = (router) => {
       description: req.body.description,
       image: req.body.image,
       status: 0,
-      user: req.body.user
+      user: req.headers.userid
     })
     .save()
     .then(() => {
