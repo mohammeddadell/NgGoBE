@@ -1,9 +1,12 @@
 import mongoose from '../services/mongoose'
 import { Schema } from 'mongoose'
 
-const schema = new mongoose.Schema({
-  name: String,
-  giveaways: [{ type: Schema.Types.ObjectId, ref: 'Giveaway', unique: true }],
+const giveawaySchema = new mongoose.Schema({
+  annotation: String,
+  amount: Number,
+  timestamp: String,
+  collectionTime: String,
+  status: Number,
   location: {
     latitude: String,
     longitude: String,
@@ -15,4 +18,4 @@ const schema = new mongoose.Schema({
   }
 })
 
-export default mongoose.model('User', schema)
+export default mongoose.model('Giveaway', giveawaySchema)

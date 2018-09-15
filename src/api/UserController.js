@@ -1,57 +1,64 @@
 import User from '../models/User'
 
 const UserController = (router) => {
-  router.post('/users', (req, res) => {
+  router.post('/user', (req, res) => {
     new User({
       name: req.body.name,
-      type: req.body.type,
-      locations: req.body.locations
+      location: req.body.location
     })
-    .save()
-    .then(() => {
-      res.send({ status: 'ok' })
-    })
-    .catch(err => {
-      res.send({ errorMessage: err.message })
-      console.log(err)
-    })
+      .save()
+      .then(() => {
+        res.send({ status: 'ok' })
+      })
+      .catch(err => {
+        res.send({ errorMessage: err.message })
+        console.log(err)
+      })
   })
 
-  router.put('/users/:id', (req, res) => {
-    User.findByIdAndUpdate(req.params.id, {
-      $push: { items: req.body.item }
-    })
-    .then(user => {
-      res.send(user)
-    })
-    .catch(err => {
-      res.send({ errorMessage: err.message })
-      console.log(err)
-    })
+  router.put('/user', (req, res) => {
+    User.findByIdAndUpdate(req.body._id, req.body)
+      .then(() => {
+        res.send({ status: 'ok' })
+      })
+      .catch(err => {
+        res.send({ errorMessage: err.message })
+        console.log(err)
+      })
   })
 
-  router.get('/users', (req, res) => {
+  router.get('/user', (req, res) => {
     User.find()
-    .populate('items')
-    .then(users => {
-      res.send(users)
-    })
-    .catch(err => {
-      res.send({ errorMessage: err.message })
-      console.log(err)
-    })
+      .then(users => {
+        res.send(users)
+      })
+      .catch(err => {
+        res.send({ errorMessage: err.message })
+        console.log(err)
+      })
   })
 
-  router.get('/users/:id', (req, res) => {
+  router.get('/user/:id', (req, res) => {
     User.findById(req.params.id)
-    .populate('items')
-    .then(user => {
-      res.send(user)
-    })
-    .catch(err => {
-      res.send({ errorMessage: err.message })
-      console.log(err)
-    })
+      .populate('giveaways')
+      .then(user => {
+        res.send(user)
+      })
+      .catch(err => {
+        res.send({ errorMessage: err.message })
+        console.log(err)
+      })
+  })
+
+  router.delete('/user/:id', (req, res) => {
+    User.deleteOne({_id: req.params.id})
+      .then(() => {
+        res.send({status: 'ok'})
+      })
+      .catch(err => {
+        res.send({ errorMessage: err.message })
+        console.log(err)
+      })
   })
 }
 

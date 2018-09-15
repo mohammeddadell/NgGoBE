@@ -57,6 +57,19 @@ const DonationItemController = (router) => {
       res.send({ errorMessage: err.message })
     })
   })
+
+  router.delete('/donation-items', (req, res) => {
+    DonationItem
+    .deleteOne({id: req.body._id})
+    .then( (item) => {
+      res.send(item)
+    })
+    .catch(err => {
+      console.log(err)
+      res.send({ errorMessage: err.message })
+    })
+  })
+
 }
 
 export default DonationItemController
