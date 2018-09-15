@@ -1,10 +1,11 @@
 import { Router } from 'express'
 import DemandItemController from './DemandItemController'
+import DonationItemController from './DonationItemController'
 
 const router = new Router()
 
 DemandItemController(router)
-
+DonationItemController(router)
 
 router.get('/hello', (req, res) => {
   res.send('hello')
