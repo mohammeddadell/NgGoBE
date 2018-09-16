@@ -2,6 +2,17 @@ import Giveaway from '../models/Giveaway'
 import User from '../models/User'
 
 const GiveawayController = (router, io) => {
+  console.log('asdada')
+
+  io.on('connection', (socket) => {
+    console.log('SOCKET CONNECTED')
+  })
+
+  io.on('accept_task', (data) => {
+    console.log('accepted task')
+    io.emit('accepted_giveaway', data)
+  })
+
   router.post('/giveaway', (req, res) => {
     new Giveaway({
       annotation: req.body.annotation,
