@@ -4,12 +4,13 @@ import mongoose from './services/mongoose'
 import express from './services/express'
 import api from './api'
 import SocketIO from 'socket.io'
-import Socket from './api/socket'
+import { Router } from 'express'
 
-const app = express(apiRoot, api)
+const router = new Router()
+const app = express(apiRoot, router)
 const server = http.createServer(app)
 const io = new SocketIO(server)
-Socket(io)
+api(router, io)
 
 mongoose.connect(mongo.uri)
 mongoose.Promise = Promise

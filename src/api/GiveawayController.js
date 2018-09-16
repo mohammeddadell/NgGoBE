@@ -1,7 +1,7 @@
 import Giveaway from '../models/Giveaway'
 import User from '../models/User'
 
-const GiveawayController = (router, socket) => {
+const GiveawayController = (router, io) => {
   router.post('/giveaway', (req, res) => {
     new Giveaway({
       annotation: req.body.annotation,
@@ -14,6 +14,7 @@ const GiveawayController = (router, socket) => {
       .then((giveaway) => {
         User.findByIdAndUpdate(req.body.user, {$push: {giveaways: giveaway}})
           .then((user) => {
+            io.sockets.emit('new_task', giveaway)
             res.send({ status: 'ok' })
           })
           .catch(err => {

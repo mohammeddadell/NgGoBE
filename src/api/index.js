@@ -4,11 +4,10 @@ import DonationItemController from './DonationItemController'
 import UserController from './UserController'
 import GiveawayController from './GiveawayController'
 
-const router = new Router()
-
-DemandItemController(router)
-DonationItemController(router)
-UserController(router)
-GiveawayController(router)
-
-export default router
+export default (router, io) => {
+  DemandItemController(router, io)
+  DonationItemController(router, io)
+  UserController(router, io)
+  GiveawayController(router, io)
+  return router
+}
